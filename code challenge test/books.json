@@ -1,0 +1,32 @@
+[
+  {
+    "book_name": "The Cyberpunk Almanac",
+    "author_name": "Neo Anderson",
+    "release_date": "2077-12-10",
+    "cover_image": "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y3liZXJwdW5rJTIwYm9va3xlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "book_name": "Secrets of the Deep",
+    "author_name": "Captain Nemo",
+    "release_date": "1870-06-20",
+    "cover_image": "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG9jZWFufGVufDB8fDB8fHww"
+  },
+  {
+    "book_name": "The Martian Chronicles: Redux",
+    "author_name": "Ray Bradbury",
+    "release_date": "1950-05-04",
+    "cover_image": "https://images.unsplash.com/photo-1614728853911-04415f3b4c4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFyc3xlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "book_name": "Journey to the Center of the Earth",
+    "author_name": "Jules Verne",
+    "release_date": "1864-11-25",
+    "cover_image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anVsaWVzJTIwdmVybmV8ZW58MHx8MHx8MA%3D%3D"
+  },
+  {
+    "book_name": "The Lost City of Gold",
+    "author_name": "Indiana Jones",
+    "release_date": "1936-06-12",
+    "cover_image": "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29sZCUyMGJhc3xlbnwwfHwwfHx8MA%3D%3D"
+  }
+]

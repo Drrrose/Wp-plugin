@@ -44,7 +44,6 @@ class My_Book_Widget extends \Elementor\Widget_Base {
 			[
 				'label' => esc_html__( 'Book Data File (CSV/JSON)', 'my-book-widget' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
-				'media_types' => [ 'application/json', 'text/csv' ], // Filter allowed types if possible, though Elementor media control is generic usually.
 				'description' => esc_html__( 'Upload a CSV or JSON file containing book data.', 'my-book-widget' ),
 			]
 		);

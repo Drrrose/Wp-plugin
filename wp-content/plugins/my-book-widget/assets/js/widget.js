@@ -4,30 +4,51 @@ jQuery(window).on('elementor/frontend/init', function() {
         var $grid = $container.find('.mbw-book-grid');
         var $searchInput = $container.find('.mbw-search-input');
         var $sortSelect = $container.find('.mbw-sort-select');
-        // Convert NodeList/jQuery object to a stable array for sorting later if needed, 
-        // but we can just query children each time if list is dynamic. 
-        // Since it's static after render, getting them once is fine, but re-querying ensures we sort what's there.
+        
+        // Add simple fade animation class to items
+        $grid.find('.mbw-book-item').css({
+            'opacity': 0,
+            'transform': 'translateY(20px)',
+            'transition': 'opacity 0.4s ease-out, transform 0.4s ease-out'
+        });
+
+        // Staggered fade-in on load
+        setTimeout(function() {
+            $grid.find('.mbw-book-item').each(function(i) {
+                var $el = $(this);
+                setTimeout(function() {
+                    $el.css({ 'opacity': 1, 'transform': 'translateY(0)' });
+                }, i * 50);
+            });
+        }, 100);
         
         function filterItems() {
             var query = $searchInput.val().toLowerCase();
             var $items = $grid.find('.mbw-book-item');
-            
+            var hasVisible = false;
+
             $items.each(function() {
                 var $item = $(this);
-                // Ensure data is string
                 var name = String($item.data('name') || '');
                 var author = String($item.data('author') || '');
                 
                 if (name.includes(query) || author.includes(query)) {
-                    $item.show();
+                    $item.stop().fadeIn(300).css('display', 'flex'); // Maintain flex layout
+                    hasVisible = true;
                 } else {
-                    $item.hide();
+                    $item.stop().fadeOut(200);
                 }
             });
+
+            // Optional: Show "No results" message logic could go here
         }
 
-        // Search Event
-        $searchInput.on('input', filterItems);
+        // Debounce Search
+        var searchTimeout;
+        $searchInput.on('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(filterItems, 300);
+        });
 
         // Sort Event
         $sortSelect.on('change', function() {
@@ -41,19 +62,15 @@ jQuery(window).on('elementor/frontend/init', function() {
                 var valA = $(a).data(sortBy);
                 var valB = $(b).data(sortBy);
                 
-                // Handle empty values
                 if (valA === undefined) valA = '';
                 if (valB === undefined) valB = '';
 
-                // Date sorting
                 if (sortBy === 'date') {
-                    // Create date objects. If invalid, treat as 0 (epoch).
                     var dateA = new Date(valA).getTime() || 0;
                     var dateB = new Date(valB).getTime() || 0;
                     return dateA - dateB;
                 }
                 
-                // String sorting
                 valA = String(valA).toLowerCase();
                 valB = String(valB).toLowerCase();
 
@@ -62,10 +79,14 @@ jQuery(window).on('elementor/frontend/init', function() {
                 return 0;
             });
             
-            // Re-append sorted items
-            $.each(itemsArray, function(idx, item) {
-                $grid.append(item);
-            });
+            // Animate sorting
+            $grid.css('opacity', 0.5);
+            setTimeout(function() {
+                $.each(itemsArray, function(idx, item) {
+                    $grid.append(item);
+                });
+                $grid.animate({ opacity: 1 }, 300);
+            }, 200);
         });
     });
 });

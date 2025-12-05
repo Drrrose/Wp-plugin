@@ -124,6 +124,23 @@ final class My_Book_Widget_Plugin {
 		// Register Scripts & Styles
 		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'register_scripts' ] );
 		add_action( 'elementor/frontend/after_register_styles', [ $this, 'register_styles' ] );
+
+		// Allow JSON and CSV uploads
+		add_filter( 'upload_mimes', [ $this, 'allow_json_csv_uploads' ] );
+	}
+
+	/**
+	 * Allow JSON and CSV uploads
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @param array $mimes Current list of allowed MIME types.
+	 * @return array Updated list of allowed MIME types.
+	 */
+	public function allow_json_csv_uploads( $mimes ) {
+		$mimes['json'] = 'application/json';
+		$mimes['csv']  = 'text/csv';
+		return $mimes;
 	}
 
 	/**
